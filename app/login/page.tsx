@@ -17,16 +17,16 @@ export default function LoginPage() {
       setTimeout(() => setError(''), 3000)
     } else {
       console.log('Login enviado:', { email, password })
-      // redireciona para homepage
       router.push('/homepage')
     }
   }
 
   return (
+    <>
+    <header className="w-full bg-[#f1f1f1] border-b border-gray-300 py-2 flex justify-start shadow-sm">
+      <img src="/momentum_logo.png" alt="Logo" className="ml-12 max-w-[100px]" />
+    </header>
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#f8f9fa] p-4">
-      <header className="w-full bg-black py-2 flex justify-start">
-        <img src="/assets/img/2.png" alt="Logo" className="ml-12 max-w-[150px]" />
-      </header>
 
       {error && (
         <div className="fixed top-6 right-6 bg-red-500 text-white px-4 py-2 rounded z-50 font-bold">
@@ -80,5 +80,6 @@ export default function LoginPage() {
         </form>
       </div>
     </div>
+    </>
   )
 }

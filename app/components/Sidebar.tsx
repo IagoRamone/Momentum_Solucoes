@@ -2,9 +2,15 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import clsx from 'clsx'
 
-export default function Sidebar() {
-  const [darkMode, setDarkMode] = useState(false)
+export default function Sidebar({
+  isOpen,
+  closeSidebar,
+}: {
+  isOpen: boolean
+  closeSidebar: () => void
+}) {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
 
   const toggleSubmenu = (menuId: string) => {
@@ -12,108 +18,83 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="bg-gray-300 text-[#333] w-[250px] min-h-screen p-5 flex flex-col transition-all duration-300 font-[Poppins] fixed z-50">
+    <aside
+      className={clsx(
+        'bg-gray-300 text-[#333] w-[250px] min-h-screen p-5 flex flex-col font-[Poppins] z-50 fixed top-0 transition-transform duration-300',
+        'md:translate-x-0 md:static',
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      )}
+    >
+      {/* Botão fechar no mobile */}
+      <div className="md:hidden flex justify-end mb-4">
+        <button onClick={closeSidebar} className="text-2xl">
+          <i className="bi bi-x-lg"></i>
+        </button>
+      </div>
+
       <div className="logo mb-10">
-        <Link href="/">
+        <Link href="/" onClick={closeSidebar}>
           <h2 className="text-[25px] font-semibold hover:text-[#fdd028] transition">Momentum</h2>
         </Link>
       </div>
 
       <ul className="space-y-1 text-[15px]">
-        <li className="py-2 px-3 rounded hover:bg-gray-400">
-          <Link href="/" className="flex items-center gap-2">
+        <li className="py-2 px-3 rounded hover:bg-gray-200 transition">
+          <Link href="/" className="flex items-center gap-2 font-medium" onClick={closeSidebar}>
             <i className="bi bi-house"></i> Home
           </Link>
         </li>
 
-        {/* Desempenho */}
-        <li className="menuprincipal">
-          <div
-            className="py-2 px-3 rounded hover:bg-gray-400 cursor-pointer flex items-center gap-2"
-            onClick={() => toggleSubmenu('menu2')}
-          >
-            <i className="bi bi-credit-card"></i> Desempenho
-          </div>
-          <ul className={`${openMenu === 'menu2' ? 'flex' : 'hidden'} flex-col ml-5`}>
-            <li className="py-1 hover:text-[#fdd028]">
-              <Link href="/desempenho/vendasloja">Visão Geral</Link>
-            </li>
-            <li className="py-1 hover:text-[#fdd028]">Cupons</li>
-            <li className="py-1 hover:text-[#fdd028]">Repasses</li>
-          </ul>
-        </li>
+        {/* Menus com submenu */}
+        {[
+          { id: 'menu2', label: 'Desempenho', icon: 'bi-bar-chart', links: [
+            { label: 'Visão Geral', href: '/desempenho/vendasloja' },
+            { label: 'Cupons' },
+            { label: 'Repasses' },
+          ]},
+          { id: 'menu1', label: 'Visão operacional', icon: 'bi-gear', links: [
+            { label: 'Visão Geral das lojas' },
+            { label: 'Itens pausados', href: '/operacional/items' },
+            { label: 'Status das lojas', href: '/operacional/statuslojas' },
+          ]},
+          { id: 'menu3', label: 'Clientes', icon: 'bi-people', links: [
+            { label: 'Visão Geral' },
+            { label: 'Por Bairro' },
+            { label: 'Por Cidade' },
+          ]},
+          { id: 'menu4', label: 'Avaliações', icon: 'bi-chat-left-text', links: [
+            { label: 'Visão Geral', href: '/avaliacao/visaogeral' },
+            { label: 'Comentários' },
+          ]},
+          { id: 'menu5', label: 'Conta', icon: 'bi-person-gear', links: [
+            { label: 'Perfil', href: '/conta/perfil' },
+            { label: 'Lojas', href: '/conta/lojas' },
+          ]}
+        ].map(menu => (
+          <li key={menu.id} className="menuprincipal">
+            <div
+              className="py-2 px-3 rounded hover:bg-gray-200 cursor-pointer flex items-center gap-2 font-medium"
+              onClick={() => toggleSubmenu(menu.id)}
+            >
+              <i className={`bi ${menu.icon}`}></i> {menu.label}
+              <i className={`bi ${openMenu === menu.id ? 'bi-chevron-down' : 'bi-chevron-right'} ml-auto`}></i>
+            </div>
+            <ul className={`${openMenu === menu.id ? 'flex' : 'hidden'} flex-col ml-5 mt-2`}>
+              {menu.links.map((link, index) => (
+                <li key={index} className="py-1 hover:text-[#fdd028]">
+                  {link.href ? (
+                    <Link href={link.href} onClick={closeSidebar}>{link.label}</Link>
+                  ) : (
+                    link.label
+                  )}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
 
-        {/* Operacional */}
-        <li className="menuprincipal">
-          <div
-            className="py-2 px-3 rounded hover:bg-gray-400 cursor-pointer flex items-center gap-2"
-            onClick={() => toggleSubmenu('menu1')}
-          >
-            <i className="bi bi-bag"></i> Visão operacional
-          </div>
-          <ul className={`${openMenu === 'menu1' ? 'flex' : 'hidden'} flex-col ml-5`}>
-            <li className="py-1 hover:text-[#fdd028]">Visão Geral das lojas</li>
-            <li className="py-1 hover:text-[#fdd028]">
-              <Link href="/operacional/items">Itens pausados</Link>
-            </li>
-            <li className="py-1 hover:text-[#fdd028]">
-              <Link href="/operacional/statuslojas">Status das lojas</Link>
-            </li>
-          </ul>
-        </li>
-
-        {/* Clientes */}
-        <li className="menuprincipal">
-          <div
-            className="py-2 px-3 rounded hover:bg-gray-400 cursor-pointer flex items-center gap-2"
-            onClick={() => toggleSubmenu('menu3')}
-          >
-            <i className="bi bi-person"></i> Clientes
-          </div>
-          <ul className={`${openMenu === 'menu3' ? 'flex' : 'hidden'} flex-col ml-5`}>
-            <li className="py-1 hover:text-[#fdd028]">Visão Geral</li>
-            <li className="py-1 hover:text-[#fdd028]">Por Bairro</li>
-            <li className="py-1 hover:text-[#fdd028]">Por Cidade</li>
-          </ul>
-        </li>
-
-        {/* Avaliações */}
-        <li className="menuprincipal">
-          <div
-            className="py-2 px-3 rounded hover:bg-gray-400 cursor-pointer flex items-center gap-2"
-            onClick={() => toggleSubmenu('menu4')}
-          >
-            <i className="bi bi-star"></i> Avaliações
-          </div>
-          <ul className={`${openMenu === 'menu4' ? 'flex' : 'hidden'} flex-col ml-5`}>
-            <li className="py-1 hover:text-[#fdd028]">
-              <Link href="/avaliacao/visaogeral">Visão Geral</Link>
-            </li>
-            <li className="py-1 hover:text-[#fdd028]">Comentários</li>
-          </ul>
-        </li>
-
-        {/* Conta */}
-        <li className="menuprincipal">
-          <div
-            className="py-2 px-3 rounded hover:bg-gray-400 cursor-pointer flex items-center gap-2"
-            onClick={() => toggleSubmenu('menu5')}
-          >
-            <i className="bi bi-person"></i> Conta
-          </div>
-          <ul className={`${openMenu === 'menu5' ? 'flex' : 'hidden'} flex-col ml-5`}>
-            <li className="py-1 hover:text-[#fdd028]">
-              <Link href="/conta/perfil">Perfil</Link>
-            </li>
-            <li className="py-1 hover:text-[#fdd028]">
-              <Link href="/conta/lojas">Lojas</Link>
-            </li>
-            {/* <li className="py-1 hover:text-[#fdd028]"><Link href="/conta/admin">Admin</Link></li> */}
-          </ul>
-        </li>
-
-        <li className="py-2 px-3 rounded hover:bg-gray-400 mt-2">
-          <Link href="/logout" className="flex items-center gap-2">
+        <li className="py-2 px-3 rounded hover:bg-gray-200 mt-2 transition">
+          <Link href="/logout" className="flex items-center gap-2 font-medium" onClick={closeSidebar}>
             <i className="bi bi-box-arrow-right"></i> Logout
           </Link>
         </li>
@@ -123,9 +104,9 @@ export default function Sidebar() {
         <p className="text-sm">Bem-vindo,</p>
         <button
           className="mt-2 bg-gray-700 text-white rounded px-3 py-1 text-sm hover:bg-[#fdd028] hover:text-black transition"
-          onClick={() => setDarkMode(!darkMode)}
+          onClick={closeSidebar}
         >
-          {darkMode ? '☀️ Modo Claro' : '🌙 Modo Escuro'}
+          🌙 Modo Escuro
         </button>
       </div>
     </aside>

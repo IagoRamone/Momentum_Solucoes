@@ -9,7 +9,7 @@ export default function HomePage() {
       {/* Header */}
       <header className="flex items-center justify-between px-8 sm:px-16 py-4 bg-white border-b border-gray-200 shadow-sm fixed w-full z-50">
         <div className="flex items-center gap-2">
-          <Image src="/assets/img/2.png" alt="Logo" width={40} height={40} />
+          <Image src="/momentum_logo.png" alt="Logo" width={100} height={40} />
           <h1 className="text-xl font-semibold text-gray-900">Momentum Soluções</h1>
         </div>
         <Link
