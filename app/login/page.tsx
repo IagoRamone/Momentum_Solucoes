@@ -34,7 +34,7 @@ export default function LoginPage() {
         </div>
       )}
 
-      <div className="bg-white border border-black rounded-lg mt-16 p-8 w-[300px] shadow-md">
+      <div className="bg-white border border-black rounded-lg mt-5 p-8 w-[300px] shadow-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <label htmlFor="email" className="text-left text-sm font-medium">
