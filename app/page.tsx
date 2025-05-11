@@ -37,9 +37,7 @@ export default function HomePage() {
           Conecte. Desenvolva. Integre.
         </h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-10">
-          A <span className='text-violet-600'><strong>Momentum Soluções</strong></span> é a sua plataforma centralizada para
-          integração de dados, gestão operacional e desenvolvimento sob demanda. Uma
-          solução para equipes que querem agilidade e controle.
+          Sua plataforma central para <span className="text-violet-600">integração de dados</span>, <span className="text-violet-600">gestão operacional</span> e <span className="text-violet-600">desenvolvimento sob demanda</span>. Ideal para equipes que buscam <span className="text-violet-600">agilidade</span>, <span className="text-violet-600">eficiência</span> e <span className="text-violet-600">controle total</span>.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -70,19 +68,19 @@ export default function HomePage() {
           <div className="p-6 rounded shadow shadow-xl">
             <h4 className="font-semibold text-violet-600 text-lg mb-2 ">Integração de Sistemas</h4>
             <p className="text-sm text-gray-600">
-              Conecte ERPs, CRMs, APIs externas e bases de dados de forma fluida.
+              Conecte ERPs, CRMs, APIs externas e bancos de dados com fluidez e segurança.
             </p>
           </div>
           <div className="p-6 rounded shadow shadow-xl">
             <h4 className="font-semibold text-violet-600 text-lg mb-2 ">Ambiente de Desenvolvimento</h4>
             <p className="text-sm text-gray-600">
-              Um espaço com ferramentas e métricas para sua equipe técnica criar e evoluir.
+              Ferramentas, métricas e recursos para sua equipe técnica inovar e evoluir continuamente.
             </p>
           </div>
           <div className="p-6 rounded shadow shadow-xl">
             <h4 className="font-semibold text-violet-600 text-lg mb-2">Gestão Unificada</h4>
             <p className="text-sm text-gray-600">
-              Tudo em um só lugar: controle de processos, usuários, integrações e mais.
+              Gerencie processos, usuários, integrações e muito mais em um único lugar.
             </p>
           </div>
         </div>
