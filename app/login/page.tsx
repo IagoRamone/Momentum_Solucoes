@@ -30,7 +30,7 @@ export default function LoginPage() {
   return (
     <>
       <header className="w-full bg-[#fff] shadow-xl py-2 flex justify-start">
-        <a href="/login"><img src="/momentum_logo.png" alt="Logo" className="ml-12 max-w-[70px]" /></a>
+        <a href="/"><img src="/momentum_logo.png" alt="Logo" className="ml-12 max-w-[70px]" /></a>
       </header>
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#f8f9fa] p-4 shadow-xl">
         {error && (

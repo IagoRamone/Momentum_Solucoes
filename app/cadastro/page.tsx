@@ -44,7 +44,7 @@ export default function CadastroPage() {
   return (
     <>
       <header className="w-full bg-white shadow-xl py-2 flex justify-start">
-        <a href="/login">
+        <a href="/">
           <img src="/momentum_logo.png" alt="Logo" className="ml-12 max-w-[70px]" />
         </a>
       </header>
