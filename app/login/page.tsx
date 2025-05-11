@@ -43,7 +43,16 @@ export default function LoginPage() {
         )}
 
         <div className="bg-white rounded-lg mt-10 p-10 w-full max-w-md shadow-xl">
-          <h3 className="text-2xl mb-6 text-center">Login</h3>
+          <header className="w-full bg-white py-2 block items-center">
+            <div className='flex justify-center'>
+              <a href="/">
+              <img src="/momentum_logo.png" alt="Logo" className="max-w-[150px]" />
+            </a>
+            </div>
+            <div>
+              <h3 className="text-md font-bold text-gray-500 mb-6 text-center"><span className='text-violet-600'>Login</span></h3>
+            </div>
+          </header>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div className="relative">
               <input

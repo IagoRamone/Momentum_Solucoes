@@ -43,11 +43,7 @@ export default function CadastroPage() {
 
   return (
     <>
-      <header className="w-full bg-white shadow-xl py-2 flex justify-start">
-        <a href="/">
-          <img src="/momentum_logo.png" alt="Logo" className="ml-12 max-w-[70px]" />
-        </a>
-      </header>
+
 
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#f8f9fa] p-4">
         {error && (
@@ -56,11 +52,22 @@ export default function CadastroPage() {
           </div>
         )}
 
-        <div className="bg-white shadow-xl rounded-lg mt-12 p-8 w-full max-w-md shadow-md">
-          <h2 className="text-2xl font-bold mb-6 text-center">Cadastro</h2>
+        <div className="bg-white  rounded-lg mt-5 p-8 w-full max-w-md shadow-xl">
+          <header className="w-full bg-white py-2 block items-center">
+            <div className='flex justify-center'>
+              <a href="/">
+              <img src="/momentum_logo.png" alt="Logo" className="max-w-[150px]" />
+            </a>
+            </div>
+            <div>
+              <h3 className="text-md font-bold text-gray-500 mb-6 text-center"><span className='text-violet-600'>Cadastre-se</span> e dê o próximo passo na <span className='text-violet-600'>gestão inteligente</span> dos dados empresariais.</h3>
+            </div>
+
+          </header>
+
 
           <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-            {[ 
+            {[
               { label: 'Nome da Empresa', value: empresa, set: setEmpresa, type: 'text', max: 60, id: 'empresa' },
               { label: 'CNPJ', value: cnpj, set: setCnpj, type: 'text', max: 18, id: 'cnpj' },
               { label: 'E-mail', value: email, set: setEmail, type: 'email', max: 40, id: 'email' },
