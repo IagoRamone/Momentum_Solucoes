@@ -90,7 +90,7 @@ export default function CadastroPage() {
 
             <button
               type="submit"
-              className="text-sm cursor-pointer text-center border-2 rounded-lg py-2 font-bold text-[#9834E4] border-gray-400 hover:bg-violet-800 hover:text-white transition-colors duration-200"
+              className="text-sm cursor-pointer text-center border-2 rounded-lg py-2 text-[#9834E4] border-gray-400 hover:bg-violet-800 hover:text-white transition-colors duration-200"
             >
               Cadastrar
             </button>
