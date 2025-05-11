@@ -9,14 +9,15 @@ export default function Header({ toggleSidebar }: { toggleSidebar: () => void })
         <button onClick={toggleSidebar} className="text-2xl">
           <i className="bi bi-list"></i>
         </button>
-        <Image
+        
+      </div>
+      <Image
           src="/momentum_logo.png" 
           alt="Momentum Logo"
           width={35}
           height={40}
         />
-      </div>
-      <h1 className="text-lg font-semibold">Momentum</h1>
+      
     </div>
   )
 }
