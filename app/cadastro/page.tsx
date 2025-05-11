@@ -32,99 +32,74 @@ export default function CadastroPage() {
       router.push('/homepage')
     }
 
-    if (error) {
-      setTimeout(() => setError(''), 3000)
-    }
+    setTimeout(() => setError(''), 3000)
   }
+
+  const inputClass =
+    'peer w-full px-2 py-3 text-base border border-gray-300 rounded-md outline-none focus:border-[#9834E4] inset-shadow-sm'
+
+  const labelClass =
+    'bg-white text-xs cursor-pointer absolute left-2 top-3 text-gray-500 text-base transition-all duration-200 peer-focus:top-[-10px] peer-focus:left-2 peer-focus:text-xs peer-focus:text-[#9834E4] peer-focus:bg-white peer-focus:px-1'
 
   return (
     <>
-      <header className="w-full bg-[#f1f1f1] border-b border-gray-300 py-2 flex justify-start shadow-sm">
-        <img src="/momentum_logo.png" alt="Logo" className="ml-12 max-w-[100px]" />
+      <header className="w-full bg-white shadow-xl py-2 flex justify-start">
+        <a href="/">
+          <img src="/momentum_logo.png" alt="Logo" className="ml-12 max-w-[70px]" />
+        </a>
       </header>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-[#f8f9fa] p-4">
 
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[#f8f9fa] p-4">
         {error && (
           <div className="fixed top-6 right-6 bg-red-500 text-white px-4 py-2 rounded z-50 font-bold">
             {error}
           </div>
         )}
 
-        <div className="bg-white border border-black rounded-lg mt-12 p-8 w-[300px] shadow-md">
+        <div className="bg-white shadow-xl rounded-lg mt-12 p-8 w-full max-w-md shadow-md">
           <h2 className="text-2xl font-bold mb-6 text-center">Cadastro</h2>
-          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-            <label className="text-left text-sm font-medium">Nome da Empresa</label>
-            <input
-              type="text"
-              value={empresa}
-              onChange={(e) => setEmpresa(e.target.value)}
-              maxLength={50}
-              className="border border-black rounded px-3 py-2"
-              required
-            />
 
-            <label className="text-left text-sm font-medium">CNPJ</label>
-            <input
-              type="text"
-              value={cnpj}
-              onChange={(e) => setCnpj(e.target.value)}
-              maxLength={18}
-              className="border border-black rounded px-3 py-2"
-              required
-            />
-
-            <label className="text-left text-sm font-medium">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              maxLength={40}
-              className="border border-black rounded px-3 py-2"
-              required
-            />
-
-            <label className="text-left text-sm font-medium">Telefone</label>
-            <input
-              type="text"
-              value={telefone}
-              onChange={(e) => setTelefone(e.target.value)}
-              maxLength={15}
-              className="border border-black rounded px-3 py-2"
-              required
-            />
-
-            <label className="text-left text-sm font-medium">Senha</label>
-            <input
-              type="password"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              maxLength={20}
-              className="border border-black rounded px-3 py-2"
-              required
-            />
-
-            <label className="text-left text-sm font-medium">Confirmar Senha</label>
-            <input
-              type="password"
-              value={confirmarSenha}
-              onChange={(e) => setConfirmarSenha(e.target.value)}
-              maxLength={20}
-              className="border border-black rounded px-3 py-2"
-              required
-            />
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+            {[ 
+              { label: 'Nome da Empresa', value: empresa, set: setEmpresa, type: 'text', max: 60, id: 'empresa' },
+              { label: 'CNPJ', value: cnpj, set: setCnpj, type: 'text', max: 18, id: 'cnpj' },
+              { label: 'E-mail', value: email, set: setEmail, type: 'email', max: 40, id: 'email' },
+              { label: 'Telefone', value: telefone, set: setTelefone, type: 'text', max: 15, id: 'telefone' },
+              { label: 'Senha', value: senha, set: setSenha, type: 'password', max: 20, id: 'senha' },
+              { label: 'Confirmar Senha', value: confirmarSenha, set: setConfirmarSenha, type: 'password', max: 20, id: 'confirmarSenha' }
+            ].map((field, idx) => (
+              <div className="relative" key={idx}>
+                <input
+                  id={field.id}
+                  type={field.type}
+                  value={field.value}
+                  onChange={(e) => field.set(e.target.value)}
+                  maxLength={field.max}
+                  required
+                  placeholder=" "
+                  className={inputClass}
+                />
+                <label
+                  htmlFor={field.id}
+                  className={`${labelClass} ${field.value ? 'top-[-10px] text-xs' : 'top-3 text-base'}`}
+                >
+                  {field.label}
+                </label>
+              </div>
+            ))}
 
             <button
               type="submit"
-              className="bg-white border-2 border-black rounded-full py-2 font-bold hover:bg-black hover:text-white transition"
+              className="text-sm cursor-pointer text-center border-2 rounded-lg py-2 text-[#9834E4] border-gray-400 hover:bg-violet-800 hover:text-white transition-colors duration-200"
             >
               Cadastrar
             </button>
 
             <a
-              href="/"
-              className="text-center border-2 border-black rounded-full py-2 font-bold hover:bg-black hover:text-white transition"
+              href="/login"
+              className="text-sm cursor-pointer text-gray-600 text-center rounded-lg py-2 hover:text-violet-600 transition"
             >
-              Voltar
+              Já tenho <u>cadastro</u>
             </a>
           </form>
         </div>

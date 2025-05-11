@@ -20,7 +20,7 @@ export default function Sidebar({
   return (
     <aside
       className={clsx(
-        'bg-gray-300 text-[#333] w-[250px] min-h-screen p-5 flex flex-col font-[Poppins] z-50 fixed top-0 transition-transform duration-300',
+        'bg-white inset-shadow-sm text-[#333] w-[250px] min-h-screen p-5 flex flex-col z-50 fixed top-0 transition-transform duration-300',
         'md:translate-x-0 md:static',
         isOpen ? 'translate-x-0' : '-translate-x-full'
       )}
@@ -33,14 +33,14 @@ export default function Sidebar({
       </div>
 
       <div className="logo mb-10">
-        <Link href="/" onClick={closeSidebar}>
-          <h2 className="text-[25px] font-semibold hover:text-[#fdd028] transition">Momentum</h2>
-        </Link>
+        <a href="">
+          <img src="/momentum_logo.png" width={90} alt="" />
+        </a>
       </div>
 
       <ul className="space-y-1 text-[15px]">
-        <li className="py-2 px-3 rounded hover:bg-gray-200 transition">
-          <Link href="/" className="flex items-center gap-2 font-medium" onClick={closeSidebar}>
+        <li className="mr-5 text-gray-500 shadow-xs py-2 px-3 rounded hover:bg-gray-200 hover:text-violet-600 transition">
+          <Link href="#" className="flex items-center gap-2 font-medium" onClick={closeSidebar}>
             <i className="bi bi-house"></i> Home
           </Link>
         </li>
@@ -73,7 +73,7 @@ export default function Sidebar({
         ].map(menu => (
           <li key={menu.id} className="menuprincipal">
             <div
-              className="py-2 px-3 rounded hover:bg-gray-200 cursor-pointer flex items-center gap-2 font-medium"
+              className="mr-8 text-gray-500 p-5 cursor-pointer shadow-xs py-2 px-3 rounded hover:bg-gray-200 hover:text-violet-600 transition"
               onClick={() => toggleSubmenu(menu.id)}
             >
               <i className={`bi ${menu.icon}`}></i> {menu.label}
@@ -81,7 +81,7 @@ export default function Sidebar({
             </div>
             <ul className={`${openMenu === menu.id ? 'flex' : 'hidden'} flex-col ml-5 mt-2`}>
               {menu.links.map((link, index) => (
-                <li key={index} className="py-1 hover:text-[#fdd028]">
+                <li key={index} className="cursor-pointer text-sm text-gray-500 py-1 hover:text-violet-600">
                   {link.href ? (
                     <Link href={link.href} onClick={closeSidebar}>{link.label}</Link>
                   ) : (
@@ -93,17 +93,17 @@ export default function Sidebar({
           </li>
         ))}
 
-        <li className="py-2 px-3 rounded hover:bg-gray-200 mt-2 transition">
+        <li className="text-gray-500 cursor-pointer shadow-xs py-2 px-3 rounded hover:bg-gray-200 hover:text-violet-600 transition">
           <Link href="/logout" className="flex items-center gap-2 font-medium" onClick={closeSidebar}>
             <i className="bi bi-box-arrow-right"></i> Logout
           </Link>
         </li>
       </ul>
 
-      <div className="mt-auto border-t pt-4 text-center">
-        <p className="text-sm">Bem-vindo,</p>
+      <div className="mt-5 m-1 p-1 rounded-xl border border-gray-300 pt-4 text-center">
+        <p className="text-sm text-violet-500">Bem-vindo,</p>
         <button
-          className="mt-2 bg-gray-700 text-white rounded px-3 py-1 text-sm hover:bg-[#fdd028] hover:text-black transition"
+          className="mt-5 mb-5 bg-white text-gray-600 shadow-xs rounded px-3 py-1 text-sm hover:bg-violet-600 hover:text-white transition"
           onClick={closeSidebar}
         >
           🌙 Modo Escuro
