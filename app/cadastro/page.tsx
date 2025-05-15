@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function CadastroPage() {
+ 
   const router = useRouter()
   const [empresa, setEmpresa] = useState('')
   const [cnpj, setCnpj] = useState('')

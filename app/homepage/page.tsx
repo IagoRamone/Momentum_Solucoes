@@ -29,37 +29,57 @@ function Home() {
       <h1 className="text-4xl text-violet-600 font-bold mb-6">Dashboard</h1>
 
       <div className="flex flex-wrap gap-4 mb-8">
-        <div className="card bg-white p-6 rounded-xl shadow flex-1 min-w-[250px] flex items-center justify-evenly shadow-md">
-          <i className="bi bi-people-fill text-5xl text-violet-600"></i>
-          <p className="text-gray-600" title="Usuários registrados">
-            <b>Usuários</b>
-            <br />
-            200
-          </p>
+        <div className="flex-1 gap-15 card bg-white p-6 rounded-xl shadow flex-1 min-w-[250px] flex items-center shadow-md">
+          <div>
+            <i className="bi bi-people-fill text-5xl text-violet-600"></i>
+          </div>
+          <div>
+            <p className="text-gray-600" title="Usuários registrados">
+              <b>Usuários</b>
+              <br />
+              200
+            </p>
+          </div>
+
         </div>
-        <div className="card bg-white p-6 rounded-xl shadow flex-1 min-w-[250px] flex items-center justify-evenly shadow-md">
-          <i className="bi bi-houses-fill text-5xl text-violet-600"></i>
-          <p className="text-gray-600" title="Lojas cadastradas">
-            <b>Lojas</b>
-            <br />
-            10
-          </p>
+        <div className="flex-1 gap-15 card bg-white p-6 rounded-xl shadow flex-1 min-w-[250px] flex items-center shadow-md">
+          <div>
+            <i className="bi bi-houses-fill text-5xl text-violet-600"></i>
+          </div>
+          <div>
+            <p className="text-gray-600" title="Lojas cadastradas">
+              <b>Lojas</b>
+              <br />
+              10
+            </p>
+          </div>
+
         </div>
-        <div className="card bg-white p-6 rounded-xl shadow flex-1 min-w-[250px] flex items-center justify-evenly shadow-md">
-          <i className="bi bi-wallet-fill text-5xl text-violet-600"></i>
-          <p className="text-gray-600" title="Receita estimada">
-            <b>Receita estimada</b>
-            <br />
-            R$ 10.000.000,00
-          </p>
+        <div className="flex-1 gap-15 card bg-white p-6 rounded-xl shadow flex-1 min-w-[250px] flex items-center shadow-md">
+          <div>
+            <i className="bi bi-wallet-fill text-5xl text-violet-600"></i>
+          </div>
+          <div>
+            <p className="text-gray-600" title="Receita estimada">
+              <b>Receita estimada</b>
+              <br />
+              R$ 10.000.000,00
+            </p>
+          </div>
+
         </div>
-        <div className="card bg-white p-6 rounded-xl shadow flex-1 min-w-[250px] flex items-center justify-evenly shadow-md">
-          <i className="bi bi-cart-fill text-5xl text-violet-600"></i>
-          <p className="text-gray-600" title="Pedidos totais">
-            <b>Pedidos totais</b>
-            <br />
-            12.4380
-          </p>
+        <div className="flex-1 gap-15 card bg-white p-6 rounded-xl shadow flex-1 min-w-[250px] flex items-center shadow-md">
+          <div>
+            <i className="bi bi-cart-fill text-5xl text-violet-600"></i>
+          </div>
+          <div>
+            <p className="text-gray-600" title="Pedidos totais">
+              <b>Pedidos totais</b>
+              <br />
+              12.4380
+            </p>
+          </div>
+
         </div>
       </div>
 
